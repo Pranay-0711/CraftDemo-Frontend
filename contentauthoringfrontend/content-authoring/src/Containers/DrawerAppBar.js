@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import {Link} from 'react-router-dom'
 
 export default function DrawerAppBar() {
   return (
@@ -24,9 +25,9 @@ export default function DrawerAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Form Based Content Authoring
           </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">FAQ</Button>
-          <Button color="inherit">Help Article</Button>
+          <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to="/">Home</Link></Button>
+          <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to="/faq">FAQ</Link></Button>
+          <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to="/article">Help Article</Link></Button>
         </Toolbar>
       </AppBar>
     </Box>
