@@ -8,21 +8,15 @@
       "subtitle": {
         "type": "string"
       },
-      "image": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string"
-          },
-          "altText": {
-            "type": "string"
-          }
-        },
-        "required": ["url", "altText"]
+      "imageUrl": {
+        "type": "string"
+      },
+      "imageText": {
+        "type": "string"
       },
       "paragraph": {
         "type": "string"
       }
     },
-    "required": ["title", "subtitle", "image", "paragraph"]
+    "required": ["title", "subtitle", "paragraph"]
   }

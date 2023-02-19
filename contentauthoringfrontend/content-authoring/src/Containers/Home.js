@@ -1,10 +1,14 @@
-import React from 'react'
-import FAQList from './FAQList'
+import React from "react";
+import DisplayList from "../Components/DisplayList";
+import FAQList from "../Components/FAQList";
 
 function Home() {
   return (
-   <FAQList></FAQList>
-  )
+    <>
+      <FAQList />
+      <DisplayList />
+    </>
+  );
 }
 
-export default Home
+export default Home;
