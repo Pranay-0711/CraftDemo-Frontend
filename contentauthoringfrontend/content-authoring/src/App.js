@@ -2,6 +2,7 @@ import "./App.css";
 import DrawerAppBar from "./containers/DrawerAppBar";
 import FormBuilder from "./containers/FormBuilder";
 import UpdateFaq from "./containers/UpdateFaq";
+import UpdateArticle from "./containers/UpdateArticle";
 import { Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
 import HelpArticleSchema from "./Schema/HelpArticleSchema.json";
@@ -43,6 +44,7 @@ function App() {
         ></Route>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/faq/update" element={<UpdateFaq></UpdateFaq>}></Route>
+        <Route path="/article/update" element={<UpdateArticle></UpdateArticle>}></Route>
       </Routes>
     </div>
   );

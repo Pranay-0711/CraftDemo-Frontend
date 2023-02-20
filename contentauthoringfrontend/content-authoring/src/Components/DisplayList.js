@@ -17,7 +17,7 @@ export default function DisplayList(props) {
       <Paper elevation={3} style={paperStyle}>
         <h4>Help Articles Added</h4>
         {contentList.map((content, index) => (
-          <HelpArticle id={index} content={content}></HelpArticle>
+          <HelpArticle id={content.id} content={content}></HelpArticle>
         ))}
       </Paper>
     </div>

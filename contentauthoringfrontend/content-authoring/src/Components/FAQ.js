@@ -18,7 +18,10 @@ function FAQ(props) {
   const navigate = useNavigate();
   const handleDelete = (id) => {
     fetch(`http://localhost:8080/faq/${id}/delete`, { method: "DELETE" })
-      .then((res) => {res.json();navigate("/");})
+      .then((res) => {
+        res.json();
+        navigate("/");
+      })
       .then((res) => {
         console.log(res);
       });
