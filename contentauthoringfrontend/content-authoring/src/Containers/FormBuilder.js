@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { genericFormBuilder } from "../service/genericFormBuilder";
+import { addFormDetails } from "../service/addFormDetails";
 
 export default function FormBuilder({ schema, title, endpoint, type }) {
   const [list, setList] = useState([]);
@@ -18,9 +20,7 @@ export default function FormBuilder({ schema, title, endpoint, type }) {
     properties.forEach((property) => (errorFields[property] = false));
     setError(errorFields);
     setFormField(faqArticle);
-    fetch(`http://localhost:8080/${type}/${userId}/get`)
-      .then((res) => res.json())
-      .then((res) => setList(res));
+    genericFormBuilder(type, userId, setList);
   }, []);
 
   const properties = Object.keys(schema.properties);
@@ -45,12 +45,7 @@ export default function FormBuilder({ schema, title, endpoint, type }) {
       alert("Please fill the required details");
       return;
     }
-    fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formField),
-    }).then(() => console.log("FAQ Added"));
-    navigate("/");
+    addFormDetails(endpoint, formField, navigate);
   };
   return (
     <div>
@@ -82,3 +77,5 @@ export default function FormBuilder({ schema, title, endpoint, type }) {
     </div>
   );
 }
+
+

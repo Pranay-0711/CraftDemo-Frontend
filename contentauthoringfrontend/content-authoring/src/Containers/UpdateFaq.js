@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import schema from "../Schema/FAQSchema.json";
+import { getFaqList } from "../service/getFaqList";
+import { UpdateFaqList } from "../service/UpdateFaqList";
 
 function UpdateFaq() {
   const [list, setList] = useState([]);
@@ -17,15 +19,7 @@ function UpdateFaq() {
   const properties = Object.keys(schema.properties);
   const endpoint = `http://localhost:8080/faq/${params.id}/update`;
   useEffect(() => {
-    fetch(`http://localhost:8080/faq/${userId}/get`)
-      .then((res) => res.json())
-      .then((res) => {
-        setList(res);
-        if (params?.id) {
-          const { question, answer } = res.filter((l) => l.id == params?.id)[0];
-          setFormField({ ...formField, answer, question });
-        }
-      });
+    getFaqList(userId, setList, params, setFormField, formField);
   }, []);
 
   const handleChange = (event, property) => {
@@ -52,13 +46,7 @@ function UpdateFaq() {
     let request = list.filter((l) => l.id == params.id)[0];
     request.question = formField.question;
     request.answer = formField.answer;
-    console.log(endpoint);
-    fetch(endpoint, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request),
-    }).then(() => console.log("FAQ Added"));
-    navigate("/");
+    UpdateFaqList(endpoint, request, navigate);
   };
   return (
     <div>
@@ -91,3 +79,5 @@ function UpdateFaq() {
 }
 
 export default UpdateFaq;
+
+

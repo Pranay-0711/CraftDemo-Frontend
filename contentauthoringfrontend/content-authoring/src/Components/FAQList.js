@@ -6,10 +6,10 @@ export default function FAQList() {
   const paperStyle = { padding: "10px 20px", width: 600, margin: "20px auto" };
   const loggedInUser = "3817e571-9cb9-4cb5-a5a3-b8937a3be250";
   const [faqList, setFaqList] = React.useState([]);
-  React.useEffect(() => {
+  React.useEffect(() => {      
     fetch(`http://localhost:8080/faq/${loggedInUser}/get`)
       .then((res) => res.json())
-      .then((res) => setFaqList(res));
+      .then((res) => {setFaqList(res)});
   }, []);
 
   return (

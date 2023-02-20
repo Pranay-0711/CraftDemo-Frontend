@@ -1,9 +1,9 @@
 import "./App.css";
-import DrawerAppBar from "./Containers/DrawerAppBar";
-import FormBuilder from "./Containers/FormBuilder";
-import UpdateFaq from "./Containers/UpdateFaq";
+import DrawerAppBar from "./containers/DrawerAppBar";
+import FormBuilder from "./containers/FormBuilder";
+import UpdateFaq from "./containers/UpdateFaq";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Containers/Home";
+import Home from "./containers/Home";
 import HelpArticleSchema from "./Schema/HelpArticleSchema.json";
 import faqSchema from "./Schema/FAQSchema.json";
 import { BASE_URL } from "./Constant.js";

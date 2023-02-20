@@ -16,6 +16,13 @@ function FAQ(props) {
   const [showMore, setShowMore] = useState(false);
   const [edit, EnableEdit] = useState(false);
   const navigate = useNavigate();
+  const handleDelete = (id) => {
+    fetch(`http://localhost:8080/faq/${id}/delete`, { method: "DELETE" })
+      .then((res) => {res.json();navigate("/");})
+      .then((res) => {
+        console.log(res);
+      });
+  };
 
   return (
     <div>
@@ -38,7 +45,7 @@ function FAQ(props) {
                   <MoreVertIcon
                     onClick={() => {
                       EnableEdit(!edit);
-                      showMore(false);
+                      setShowMore(false);
                     }}
                   ></MoreVertIcon>
                 )}
@@ -60,7 +67,9 @@ function FAQ(props) {
                           </ListItemText>
                         </MenuItem>
                         <MenuItem>
-                          <ListItemText>Delete</ListItemText>
+                          <ListItemText onClick={() => handleDelete(props.id)}>
+                            Delete
+                          </ListItemText>
                         </MenuItem>
                       </MenuList>
                     </Paper>
